@@ -14,6 +14,9 @@ namespace TPLOCAL1.Controllers
         //methode "naturally" call by router
         public ActionResult Index(string id)
         {
+            var model = new FormModel();
+            
+
             if (string.IsNullOrWhiteSpace(id))
                 //return to the Index view (see routing in Program.cs)
                 return View();
@@ -38,31 +41,18 @@ namespace TPLOCAL1.Controllers
 
         //method to send datas from form to validation page
         [HttpPost]
-        public ActionResult ValidationFormulaire(FormModel model)
+        public ActionResult ValidationFormulaire(int id, [Bind("Id,Name,Forename,Gender,Address,ZipCode")] FormModel model)
         {
             //TODO : test if model's fields are set
             //if not, display an error message and stay on the form page
             //else, call ValidationForm with the datas set by the user
 
-            if (model.Address == null || model.Address.Length < 5)
+                     
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "address too short");
-                return this.View();
+                return View("ValidationFormulaire", model);                
             }
-
-            if (!this.ModelState.IsValid)
-            {
-
-                    
-                
-                return this.View();
-
-            }
-            else
-            {
-                return this.View("ValidationFormulaire");
-            }
-
+            return View("Form", model);            
         }
     }
 }

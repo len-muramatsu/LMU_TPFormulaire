@@ -29,75 +29,86 @@
         </ul>
     </nav>
 
+ 
+    <form asp-action="ValidationFormulaire">
     <section>
         <table>
             <caption>Informations Personnelles</caption>
-            <form asp-action="ValidationFormulaire">
+            
+                <input type="hidden" asp-for="Id" />
             <tr>
-                <td>Nom</td>
+                <td>
+                    <label asp-for="Name"></label>
+                </td>
                 <td>
                     <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>                    
+                                   
                 </td>
 
             </tr>
 
             <tr>
-                <td>Prénom</td>
+                <td>
+                        <label asp-for="Forename"></label>
+                </td>
                 <td>
                     <input asp-for="Forename" class="form-control" />
-                    <span asp-validation-for="Forename" class="text-danger"></span>
+                    
                 </td>
             </tr>
             <tr>
-                <td>Sexe</td>
                 <td>
-                    <select name="Gender" id="Sexes">
-                        <option value="Select" selected>Sélectionner un sexe</option>
-                        <option value="Man">Homme</option>
-                        <option value="Woman">Femme</option>
-                        <option value="Other">Autre</option>
-                    </select>
+                        <label asp-for="Gender"></label>
+                </td>
+                <td>
+                        <select asp-for="Gender" asp-items="Model.GenderOptions" class="form-control">
+                           
+                        </select>
+                       
                 </td>
 
             </tr>
 
             <tr>
-                <td>Adresse</td>
+                <td>
+                        <label asp-for="Address"></label>
+                </td>
                 <td>
                     <input asp-for="Address" class="form-control" />
-                    <span asp-validation-for="Address" class="text-danger"></span>
-                    
                 </td>
             </tr>
             
             <tr>
-                <td>Code Postal</td>
+                <td>
+                        <label asp-for="ZipCode"></label>
+                </td>
                 <td>
                     <input asp-for="ZipCode" class="form-control" />
-                    <span asp-validation-for="ZipCode" class="text-danger"></span>
+                   
                 </td>
 
             </tr>
 
             <tr>
-                <td>Ville</td>
+                <td>
+                        <label asp-for="Town"></label>
+                </td>
                 <td>
                     <input asp-for="Town" class="form-control" />
-                    <span asp-validation-for="Town" class="text-danger"></span>
+                   
                 </td>
             </tr>
 
             <tr>
-                <td>Adresse mail</td>
+                <td>
+                        <label asp-for="EmailAdress"></label>
+                </td>
                 <td>
                     <input asp-for="EmailAdress" class="form-control" />
-                    <span asp-validation-for="EmailAdress" class="text-danger"></span>
+                    
                 </td>
 
             </tr>
-
-            </form>
 
         </table>
         
@@ -109,20 +120,23 @@
     <section>
         <table>
             <caption>Informations formation suivie</caption>
-            <form asp-action="ValidationFormulaire">
             <tr>
-                <td>Date début formation</td>
+                <td>
+                        <label asp-for="DateDebutFormation"></label>
+                </td>
                 <td>
                     <input asp-for="DateDebutFormation" class="form-control" />
-                    <span asp-validation-for="DateDebutFormation" class="text-danger"></span>
+                    
                 </td>
 
             </tr>
 
             <tr>
-                <td>Formation suivie</td>
                 <td>
-                    <select name="Formation" id="Formation">
+                        <label asp-for="Formation"></label>
+                </td>
+                <td>
+                    <select name="Formation" asp-for="Formation">
                         <option value="Select" selected>Sélectionner une formation</option>
                         <option value="Cobol">Formation Cobol</option>
                         <option value="Object">Formation Objet</option>
@@ -130,16 +144,18 @@
                     </select>
                 </td>
             </tr>
-            </form>
+     
         </table>
     </section>
 
     <section>
         <table>
             <caption>Avis sur la formation</caption>
-            <form asp-action="ValidationFormulaire">
+        
             <tr>
-                <td>Formation Cobol</td>
+                <td>
+                        <label asp-for="AvisFormationCobol"></label>
+                </td>
                 <td>
                     <input asp-for="AvisFormationCobol" class="form-control" />
                     </td>
@@ -147,31 +163,26 @@
             </tr>
 
             <tr>
-                <td>Formation C#</td>
+                <td>
+                        <label asp-for="AvisFormationCs"></label>
+                </td>
                 <td>
                     <input asp-for="AvisFormationCs" class="form-control" />                 
                 </td>
             </tr>
-            </form>
+           
         </table>
     </section>
-
-
-    <form asp-action="ValidationFormulaire">
-        
-        <input type="submit" value="Valider" class="validation" /> 
-
-    </form>
     
+    <input type="submit" value="Valider" class="validation" /> 
+
+    </form>   
 
 </body>
 
-
-
 </html>
 
+
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    <partial name="_ValidationScriptsPartial" />
 }
