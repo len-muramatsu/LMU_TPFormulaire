@@ -61,8 +61,11 @@
                         <label asp-for="Gender"></label>
                 </td>
                 <td>
-                        <select asp-for="Gender" asp-items="Model.GenderOptions" class="form-control">
-                           
+                        <select name="Gender" id="Sexes" asp-for="Gender">
+                            <option value="Select" selected>Sélectionner un sexe</option>
+                            <option value="Man">Homme</option>
+                            <option value="Woman">Femme</option>
+                            <option value="Other">Autre</option>
                         </select>
                        
                 </td>
@@ -136,7 +139,7 @@
                         <label asp-for="Formation"></label>
                 </td>
                 <td>
-                    <select name="Formation" asp-for="Formation">
+                    <select name="Formation" id="Formation" asp-for="Formation">
                         <option value="Select" selected>Sélectionner une formation</option>
                         <option value="Cobol">Formation Cobol</option>
                         <option value="Object">Formation Objet</option>

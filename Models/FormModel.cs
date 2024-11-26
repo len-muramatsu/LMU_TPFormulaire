@@ -19,15 +19,11 @@ namespace TPLOCAL1.Models
 
         [Display(Name = "Genre")]
         [Required(ErrorMessage = "Choisissez un genre.")]
-
         public string? Gender { get; set; }
-        public List<SelectListItem> GenderOptions { get; set; } = new List<SelectListItem>
-        {
-            new() { Value = "Male", Text = "Homme" },
-            new() { Value = "Female", Text = "Femme" },
-            new() { Value = "Other", Text = "Autre" }
-        };
-        //public List<SelectListItem> Gender { get; set; }
+
+        [Display(Name = "Formation suivie")]
+        [Required(ErrorMessage = "Choisissez une formation.")]
+        public string? Formation { get; set; }
 
         [Display(Name = "Adresse")]
         [Required(ErrorMessage = "Entrez une adresse.")]
@@ -52,16 +48,12 @@ namespace TPLOCAL1.Models
                            , ErrorMessage ="La date doit être inférieure au 01/01/2021." )]
         public DateTime DateDebutFormation { get; set; }
 
-        [Display(Name = "Formation suivie")]
-        [Required(ErrorMessage = "Choisissez une formation.")]
-        public List<SelectListItem> Formation { get; set; }
+        
 
-        [Display(Name = "Formation Cobol")]
-        [Required(ErrorMessage = "Entrez un avis sur la formation Cobol.")]
+        [Display(Name = "Formation Cobol")]        
         public string? AvisFormationCobol { get; set; }
 
-        [Display(Name = "Formation C#")]
-        [Required(ErrorMessage = "Entrez un avis sur la formation C#.")]
+        [Display(Name = "Formation C#")]       
         public string? AvisFormationCs { get; set; }
     }
 }

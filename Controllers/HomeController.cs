@@ -14,9 +14,7 @@ namespace TPLOCAL1.Controllers
         //methode "naturally" call by router
         public ActionResult Index(string id)
         {
-            var model = new FormModel();
             
-
             if (string.IsNullOrWhiteSpace(id))
                 //return to the Index view (see routing in Program.cs)
                 return View();
@@ -26,6 +24,9 @@ namespace TPLOCAL1.Controllers
                 switch (id)
                 {
                     case "OpinionList":
+                        OpinionList myClass = new OpinionList(); 
+                        //List<Opinion> items = myClass.GetAvis();
+                        
                         //TODO : code reading of the xml files provide
                         return View(id);
                     case "Form":
