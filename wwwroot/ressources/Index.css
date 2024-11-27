@@ -36,7 +36,7 @@ section, .validation {
     margin-left: 170px;
 }
 
-table, th, td, .form-control {
+table, th, td {
     border: 1px solid black;
 }
 
