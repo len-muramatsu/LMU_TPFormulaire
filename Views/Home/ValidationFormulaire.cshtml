@@ -17,9 +17,7 @@
 <body>
     <header>
         <img src="~/ressources/GroupeHN.png" class="image" alt="GroupeHN" />
-        <h1>Page de validation</h1>
-        
-
+        <h1>Page de validation</h1>        
     </header>
 
     <nav>
@@ -28,6 +26,8 @@
             <li><a href="/Home/Index/OpinionList">Liste avis</a> </li>
         </ul>
     </nav>
+
+    
 
     <section> 
         <a>Votre formulaire a bien été pris en compte </a>       
@@ -94,6 +94,8 @@
 
 
     </section>
+    <br />
+
 
     <section>
         <table>
@@ -110,12 +112,13 @@
             <tr>
                 <td>Formation suivie</td>
                 <td>
-                    @Html.DisplayFor(model => model.Formation)
+                    @Html.DisplayFor(model => model.FormationSuivie)
                 </td>
             </tr>
         </table>
     </section>
 
+    <br />
     <section>
         <table>
             <caption>Avis sur la formation</caption>

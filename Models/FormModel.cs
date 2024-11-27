@@ -6,7 +6,7 @@ namespace TPLOCAL1.Models
 {
     public class FormModel
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         [Display(Name = "Nom")]
         [Required(ErrorMessage = "Entrez un nom.")]
@@ -20,10 +20,6 @@ namespace TPLOCAL1.Models
         [Display(Name = "Genre")]
         [Required(ErrorMessage = "Choisissez un genre.")]
         public string? Gender { get; set; }
-
-        [Display(Name = "Formation suivie")]
-        [Required(ErrorMessage = "Choisissez une formation.")]
-        public string? Formation { get; set; }
 
         [Display(Name = "Adresse")]
         [Required(ErrorMessage = "Entrez une adresse.")]
@@ -43,12 +39,13 @@ namespace TPLOCAL1.Models
         public string? EmailAdress { get; set; }
 
         [Display(Name = "Date début formation")]
-        [DataType(DataType.Date)]
-        [RegularExpression(@"(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19[5-9][0-9]|20[0-2][0-1]|2021)"
-                           , ErrorMessage ="La date doit être inférieure au 01/01/2021." )]
+        [Required]
+        [DataType(DataType.Date)]        
         public DateTime DateDebutFormation { get; set; }
-
-        
+   
+        [Display(Name = "Formation suivie")]
+        [Required(ErrorMessage = "Choisissez une formation.")]
+        public string? FormationSuivie { get; set; }
 
         [Display(Name = "Formation Cobol")]        
         public string? AvisFormationCobol { get; set; }

@@ -40,3 +40,10 @@ table, th, td, .form-control {
     border: 1px solid black;
 }
 
+.red-cell {
+    background-color: red;
+}
+
+.green-cell {
+    background-color: green;
+}

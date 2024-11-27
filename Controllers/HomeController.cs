@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using TPLOCAL1.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //Subject is find at the root of the project and the logo in the wwwroot/ressources folders of the solution
 //--------------------------------------------------------------------------------------
@@ -24,13 +25,14 @@ namespace TPLOCAL1.Controllers
                 switch (id)
                 {
                     case "OpinionList":
-                        OpinionList myClass = new OpinionList(); 
-                        //List<Opinion> items = myClass.GetAvis();
-                        
-                        //TODO : code reading of the xml files provide
+                        var opinionList = new OpinionList();
+                        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\XlmFile/DataAvis.xml");
+                        var opinions = opinionList.GetAvis(filePath); 
+                        ViewBag.Opinions = opinions;
                         return View(id);
                     case "Form":
-                        //TODO : call the Form view with data model empty
+                        var formModel = new FormModel(); 
+                        ViewBag.FormModel = formModel;
                         return View(id);
                     default:
                         //return to the Index view (see routing in Program.cs)
@@ -42,13 +44,17 @@ namespace TPLOCAL1.Controllers
 
         //method to send datas from form to validation page
         [HttpPost]
-        public ActionResult ValidationFormulaire(int id, [Bind("Id,Name,Forename,Gender,Address,ZipCode")] FormModel model)
+        public ActionResult ValidationFormulaire([Bind("Id,Name,Forename,Gender,Address,ZipCode,Town,EmailAdress,DateDebutFormation,FormationSuivie")] FormModel model)
         {
             //TODO : test if model's fields are set
             //if not, display an error message and stay on the form page
             //else, call ValidationForm with the datas set by the user
+            DateTime referenceDate = new DateTime(2021, 1, 1);
+            if (model.DateDebutFormation == DateTime.MinValue || model.DateDebutFormation > referenceDate)
+            {
+                ModelState.AddModelError("", "La date de début de formation doit être antérieure au 01/01/2021.");
+            }
 
-                     
             if (ModelState.IsValid)
             {
                 return View("ValidationFormulaire", model);                
